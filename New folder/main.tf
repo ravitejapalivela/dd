@@ -12,39 +12,39 @@ terraform {
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = "e7fe9033-b818-441a-8a7b-772834afc53b"
-  client_id       = "6db7f72e-a05a-4545-94b9-d2eb41fb8f8e"
-  client_secret   = "WR98Q~-AsJc-2HoSowlOam4-YiIm9gWGwMyiMdCb"
-  tenant_id       = "9680a610-ed23-40ff-856f-209dd7a0a508"
+  subscription_id = "afd1c8de-d6b4-4c56-a061-1ee0ab5b8bcf"
+  client_id       = "49d0322d-8724-4f89-9d6e-450bc63f34d3"
+  client_secret   = "wIT8Q~Ck866BIRAztd72zJmgHf_s9JIkPZZZoalg"
+  tenant_id       = "f0e2d0aa-47db-45f2-afe6-728cf46a115c"
 
 
 }
 
 terraform {
   backend "azurerm" {
-    storage_account_name = "tanyyastatefile"
-    container_name       = "terrafromstatefile"
-    key                  = "Remote.terraform.tfstate"
+    storage_account_name = "testing202456"
+    container_name       = "testing123321"
+    key                  = "terraformdev.tfstate"
 
     # rather than defining this inline, the Access Key can also be sourced
     # from an Environment Variable - more information is available below.
-    access_key = "JcNC8B/vf9hxnWDOEflvZtPJFuKS0fptofpzTBbpXK17XOxeulzgttaYccPOFmwg25OEB/K3lPqd+AStLM31rw=="
+    access_key = "yUdwIg7Ep4CxQURqINJOZcb/ZiL7mP9A2WkMDqSOTcG9Ku99HWNqw0k0ZVZ7hTe1PAGX0/HxmePx+AStTQIfYg=="
   }
 }
 
 
 
-
-# Create a resource group with variables 
-resource "azurerm_resource_group" "RG2" {
-  name     = var.rgname
-  location = var.rglocation
+# Create a resource group without variables 
+resource "azurerm_resource_group" "RG1" {
+  name     = "terraformlearnings-tejas-RG1"
+  location = "South India"
 }
 
-# Create a virtual network within the resource group with  variables
-resource "azurerm_virtual_network" "Vnet2" {
-  name                = var.vnetname
-  resource_group_name = var.rgname
-  location            = var.rglocation
-  address_space       = ["10.1.0.0/22"]
+# Create a virtual network within the resource group with out variables
+resource "azurerm_virtual_network" "Vnet1" {
+  name                = "terraformlearnings-Vnet1"
+  resource_group_name = "terraformlearnings-tejas-RG1"
+  location            = "South India"
+  address_space       = ["10.0.0.0/22"]
 }
+
