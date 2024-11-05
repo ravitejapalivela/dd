@@ -4,7 +4,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.69.0"
+      version = "3.90.0"
     }
   }
 }
@@ -21,6 +21,13 @@ skip_provider_registration = true
 
 }
 
+
+# Create a resource group without variables 
+resource "azurerm_resource_group" "RG1" {
+  name     = "terraformlearnings-tejas-RG2"
+  location = "South India"
+}
+
 terraform {
   backend "azurerm" {
     storage_account_name = "testing202456"
@@ -33,19 +40,4 @@ terraform {
   }
 }
 
-
-
-# Create a resource group without variables 
-resource "azurerm_resource_group" "RG1" {
-  name     = "terraformlearnings-tejas-RG1"
-  location = "South India"
-}
-
-# Create a virtual network within the resource group with out variables
-resource "azurerm_virtual_network" "Vnet1" {
-  name                = "terraformlearnings-Vnet1"
-  resource_group_name = "terraformlearnings-tejas-RG1"
-  location            = "South India"
-  address_space       = ["10.0.0.0/22"]
-}
 
